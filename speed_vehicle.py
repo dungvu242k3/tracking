@@ -8,21 +8,11 @@ from ultralytics import YOLO
 
 model = YOLO('best.pt')
 tracker = DeepSort(max_age=30)
-video_path = "highway1.mp4"
+video_path = "sample_video.mp4"
 cap = cv2.VideoCapture(video_path)
 PIXELS_PER_METER = 5
 
-frame_count = 0
-start_time = time.time()
-
-while frame_count < 150:
-    ret, _ = cap.read()
-    if not ret:
-        break
-    frame_count += 1
-
-end_time = time.time()
-fps = 50
+fps = 30
 cap.set(cv2.CAP_PROP_POS_FRAMES, 0)
 
 object_history = {}
